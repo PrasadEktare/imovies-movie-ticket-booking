@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #e50914;
+  --primary-hover: #b80710;
+  --bg-dark: #0f1016;
+  --card-bg: #181a24;
+  --card-border: #262938;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --seat-available: #2a2e3d;
+  --seat-selected: #00e676;
+  --seat-booked: #ef4444;
+  --seat-vip: #ffd700;
+  --seat-premium: #a855f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1016;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2e3e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e4359;
+}
+
+/* Glassmorphism & Cards */
+.imovies-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.imovies-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(229, 9, 20, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.imovies-btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+
+.imovies-btn-primary:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(229, 9, 20, 0.4);
+}
+
+/* Movie Poster Container */
+.movie-poster-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 2 / 3;
+}
+
+.movie-poster-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.imovies-card:hover .movie-poster-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Seat Grid Styles */
+.seat {
+  width: 34px;
+  height: 32px;
+  margin: 4px;
+  border-radius: 6px 6px 3px 3px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.seat.available {
+  background-color: var(--seat-available);
+  color: #cbd5e1;
+  border: 1px solid #3b4256;
+}
+
+.seat.available:hover {
+  transform: scale(1.15);
+  background-color: #3b4256;
+  border-color: #64748b;
+}
+
+.seat.selected {
+  background-color: var(--seat-selected);
+  color: #000;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.6);
+  transform: scale(1.1);
+}
+
+.seat.booked {
+  background-color: #371b22;
+  color: #8b3446;
+  border: 1px solid #4a1f2c;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Screen Curve Graphic */
+.theatre-screen-curve {
+  height: 12px;
+  background: linear-gradient(to bottom, #38bdf8, transparent);
+  border-radius: 50% 50% 0 0;
+  box-shadow: 0 -8px 24px rgba(56, 189, 248, 0.35);
+  margin-bottom: 30px;
+}
