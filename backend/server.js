@@ -13,10 +13,38 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Cached DB connection for serverless environments (Vercel) & standard servers
+const MONGODB_URI = process.env.MONGODB_URI;
+let isConnected = false;
+
+const connectDB = async () => {
+  if (mongoose.connection.readyState === 1 || isConnected) return;
+  if (MONGODB_URI) {
+    try {
+      await mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 5000 });
+      isConnected = true;
+      console.log('✅ Connected to MongoDB Atlas!');
+    } catch (err) {
+      console.warn('⚠️  MongoDB Atlas notice:', err.message);
+      console.warn('🚀 Live In-Memory Fallback Engine is ACTIVE.');
+    }
+  }
+};
+
+// Ensure database is connected before handling requests
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 // Root & Health Check Routes
-app.get('/', (req, res) => {
+app.get(['/', '/api'], (req, res) => {
   const dbStatus = mongoose.connection.readyState === 1 ? 'MongoDB Atlas (Connected)' : 'In-Memory Fallback Engine (Active)';
   res.json({
     name: 'IMovies Movie Ticket Booking API',
@@ -32,7 +60,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({
     status: 'OK',
     databaseConnected: mongoose.connection.readyState === 1,
@@ -40,11 +68,18 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// API Routes
+// API Routes mounted on both /api/* and root /* for universal compatibility
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
+
 app.use('/api/movies', movieRoutes);
+app.use('/movies', movieRoutes);
+
 app.use('/api/shows', showRoutes);
+app.use('/shows', showRoutes);
+
 app.use('/api/bookings', bookingRoutes);
+app.use('/bookings', bookingRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
@@ -56,29 +91,15 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const MONGODB_URI = process.env.MONGODB_URI;
 
-// Start Express Server
-const server = app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🎬 IMovies Backend Server running on Port ${PORT}`);
-  console.log(`📡 API Base URL: http://localhost:${PORT}/api`);
-  console.log(`====================================================`);
-});
-
-// Attempt MongoDB Atlas Connection
-if (MONGODB_URI) {
-  mongoose
-    .connect(MONGODB_URI, { serverSelectionTimeoutMS: 5000 })
-    .then(() => {
-      console.log('✅ Successfully connected to MongoDB Atlas!');
-    })
-    .catch((err) => {
-      console.warn('⚠️  MongoDB Atlas Connection Notice:');
-      console.warn(`   ${err.message}`);
-      console.warn('💡 If using MongoDB Atlas, make sure 0.0.0.0/0 is added to IP Whitelist.');
-      console.warn('🚀 Live In-Memory Fallback Engine is ACTIVE. Full app functionality is available!');
-    });
+// Only bind to local port when not in a serverless environment (e.g. Vercel)
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🎬 IMovies Backend Server running on Port ${PORT}`);
+    console.log(`📡 API Base URL: http://localhost:${PORT}/api`);
+    console.log(`====================================================`);
+  });
 }
 
 module.exports = app;
