@@ -26,6 +26,27 @@ function MovieCard({ movie }) {
           </div>
         </div>
 
+        {/* Formats Pills */}
+        {movie.formats && movie.formats.length > 0 && (
+          <div className="d-flex flex-wrap gap-1 mb-2">
+            {movie.formats.map((fmt, idx) => (
+              <span
+                key={idx}
+                className={`badge ${
+                  fmt.includes('IMAX')
+                    ? 'bg-primary bg-opacity-25 text-info border border-info border-opacity-25'
+                    : fmt.includes('4DX')
+                    ? 'bg-danger bg-opacity-25 text-danger border border-danger border-opacity-25'
+                    : 'bg-secondary bg-opacity-25 text-light'
+                }`}
+                style={{ fontSize: '10px' }}
+              >
+                {fmt}
+              </span>
+            ))}
+          </div>
+        )}
+
         {/* Content */}
         <h5 className="text-white fw-bold text-truncate mb-1" title={movie.title}>
           {movie.title}

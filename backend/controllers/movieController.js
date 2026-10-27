@@ -9,13 +9,14 @@ const isDbConnected = () => mongoose.connection.readyState === 1;
 // @route GET /api/movies
 const getAllMovies = async (req, res) => {
   try {
-    const { genre, search, status } = req.query;
+    const { genre, search, status, format } = req.query;
 
     if (isDbConnected()) {
       const query = {};
       if (genre && genre !== 'All') query.genre = { $in: [genre] };
       if (status) query.status = status;
       if (search) query.title = { $regex: search, $options: 'i' };
+      if (format && format !== 'All') query.formats = { $in: [format] };
 
       const movies = await Movie.find(query).sort({ releaseDate: -1 });
       return res.json({ success: true, count: movies.length, movies });
@@ -31,6 +32,9 @@ const getAllMovies = async (req, res) => {
     }
     if (search) {
       list = list.filter((m) => m.title.toLowerCase().includes(search.toLowerCase()));
+    }
+    if (format && format !== 'All') {
+      list = list.filter((m) => m.formats?.includes(format));
     }
 
     res.json({ success: true, count: list.length, movies: list });

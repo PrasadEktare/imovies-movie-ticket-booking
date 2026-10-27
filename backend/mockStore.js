@@ -16,10 +16,29 @@ const initialMovies = [
     rating: 8.6,
     director: 'Denis Villeneuve',
     cast: ['Timothée Chalamet', 'Zendaya', 'Rebecca Ferguson', 'Javier Bardem'],
+    formats: ['IMAX 3D', '4DX', '2D'],
     status: 'now_showing',
   },
   {
     _id: '671d1001a1b2c3d4e5f60002',
+    title: 'Deadpool & Wolverine',
+    description:
+      'A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary Deadpool behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.',
+    genre: ['Action', 'Comedy', 'Sci-Fi'],
+    duration: 128,
+    language: 'English',
+    releaseDate: new Date('2024-07-26'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/9l1eZiJHmhr5jA625egvdngLwUT.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=73_1biulkYk',
+    rating: 8.0,
+    director: 'Shawn Levy',
+    cast: ['Ryan Reynolds', 'Hugh Jackman', 'Emma Corrin', 'Matthew Macfadyen'],
+    formats: ['IMAX 3D', '3D', '4DX', '2D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60003',
     title: 'Oppenheimer',
     description:
       'The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II, examining the deep moral and geopolitical consequences that followed.',
@@ -33,10 +52,29 @@ const initialMovies = [
     rating: 8.9,
     director: 'Christopher Nolan',
     cast: ['Cillian Murphy', 'Emily Blunt', 'Matt Damon', 'Robert Downey Jr.'],
+    formats: ['IMAX 2D', '2D'],
     status: 'now_showing',
   },
   {
-    _id: '671d1001a1b2c3d4e5f60003',
+    _id: '671d1001a1b2c3d4e5f60004',
+    title: 'Avatar: The Way of Water',
+    description:
+      'Set more than a decade after the events of the first film, learn the story of the Sully family, the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
+    genre: ['Sci-Fi', 'Adventure', 'Action'],
+    duration: 192,
+    language: 'English',
+    releaseDate: new Date('2022-12-16'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/s16H6tpK2utvwDtzZIMQvRjrqqw.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=d9MyW72ELq0',
+    rating: 7.7,
+    director: 'James Cameron',
+    cast: ['Sam Worthington', 'Zoe Saldaña', 'Sigourney Weaver', 'Stephen Lang'],
+    formats: ['IMAX 3D', '4DX', '3D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60005',
     title: 'Spider-Man: Across the Spider-Verse',
     description:
       'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.',
@@ -50,10 +88,29 @@ const initialMovies = [
     rating: 8.7,
     director: 'Joaquim Dos Santos, Kemp Powers',
     cast: ['Shameik Moore', 'Hailee Steinfeld', 'Oscar Isaac', 'Daniel Kaluuya'],
+    formats: ['IMAX 3D', '3D', '2D'],
     status: 'now_showing',
   },
   {
-    _id: '671d1001a1b2c3d4e5f60004',
+    _id: '671d1001a1b2c3d4e5f60006',
+    title: 'Gladiator II',
+    description:
+      'Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius must enter the Colosseum after his home is conquered by the tyrannical Emperors who now lead Rome with an iron fist.',
+    genre: ['Action', 'Drama', 'History'],
+    duration: 148,
+    language: 'English',
+    releaseDate: new Date('2024-11-22'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/euYIwmwkmz95mnXvufEmbL69ovr.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=4rgYUipGJNo',
+    rating: 7.5,
+    director: 'Ridley Scott',
+    cast: ['Paul Mescal', 'Pedro Pascal', 'Denzel Washington', 'Connie Nielsen'],
+    formats: ['IMAX 2D', '4DX', '2D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60007',
     title: 'Interstellar',
     description:
       'When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.',
@@ -67,10 +124,29 @@ const initialMovies = [
     rating: 8.7,
     director: 'Christopher Nolan',
     cast: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain', 'Michael Caine'],
+    formats: ['IMAX 2D', '2D'],
     status: 'now_showing',
   },
   {
-    _id: '671d1001a1b2c3d4e5f60005',
+    _id: '671d1001a1b2c3d4e5f60008',
+    title: 'Top Gun: Maverick',
+    description:
+      'After more than thirty years of service as one of the Navy’s top aviators, Pete "Maverick" Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.',
+    genre: ['Action', 'Drama'],
+    duration: 130,
+    language: 'English',
+    releaseDate: new Date('2022-05-27'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/AaV1YIdWKnjAiaOe0UUK23Luvio.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=giXco2nxYKg',
+    rating: 8.3,
+    director: 'Joseph Kosinski',
+    cast: ['Tom Cruise', 'Miles Teller', 'Jennifer Connelly', 'Jon Hamm'],
+    formats: ['IMAX 2D', '4DX', '2D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60009',
     title: 'The Batman',
     description:
       'In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.',
@@ -84,10 +160,29 @@ const initialMovies = [
     rating: 7.8,
     director: 'Matt Reeves',
     cast: ['Robert Pattinson', 'Zoë Kravitz', 'Paul Dano', 'Colin Farrell'],
+    formats: ['IMAX 2D', '2D'],
     status: 'now_showing',
   },
   {
-    _id: '671d1001a1b2c3d4e5f60006',
+    _id: '671d1001a1b2c3d4e5f60010',
+    title: 'Avengers: Endgame',
+    description:
+      'After the devastating events of Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos’ actions and restore balance to the universe.',
+    genre: ['Action', 'Sci-Fi', 'Adventure'],
+    duration: 181,
+    language: 'English',
+    releaseDate: new Date('2019-04-26'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=TcMBFSGVi1c',
+    rating: 8.4,
+    director: 'Anthony Russo, Joe Russo',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth'],
+    formats: ['IMAX 3D', '3D', '4DX', '2D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60011',
     title: 'Inception',
     description:
       'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.',
@@ -101,6 +196,25 @@ const initialMovies = [
     rating: 8.8,
     director: 'Christopher Nolan',
     cast: ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Elliot Page', 'Tom Hardy'],
+    formats: ['IMAX 2D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    _id: '671d1001a1b2c3d4e5f60012',
+    title: 'Joker: Folie à Deux',
+    description:
+      'Failed comedian Arthur Fleck meets the love of his life, Harley Quinn, while incarcerated at Arkham State Hospital. Upon his release, the two embark on a doomed, musical romantic misadventure.',
+    genre: ['Crime', 'Drama', 'Musical'],
+    duration: 138,
+    language: 'English',
+    releaseDate: new Date('2024-10-04'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/if8QiqCI7WAGImKcJCfzp6VTyKA.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/uGmYqxh8flqkM27zbv457f5Bsao.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=_OKAwz2NiOI',
+    rating: 6.8,
+    director: 'Todd Phillips',
+    cast: ['Joaquin Phoenix', 'Lady Gaga', 'Brendan Gleeson', 'Catherine Keener'],
+    formats: ['IMAX 2D', '2D'],
     status: 'now_showing',
   },
 ];
@@ -113,25 +227,23 @@ const tomorrowStr = tomorrow.toISOString().split('T')[0];
 
 const theatres = [
   { name: 'PVR ICON: Gold Class', location: 'Phoenix Mall, Downtown' },
-  { name: 'INOX Megaplex', location: 'City Center Mall' },
   { name: 'Cinepolis IMAX 3D', location: 'Grand Galleria' },
+  { name: 'INOX Megaplex 4DX', location: 'City Center Mall' },
 ];
-
-const screenTypes = ['IMAX 3D', '2D', '3D'];
 
 const initialShows = [];
 let showIdCounter = 1;
 
 initialMovies.forEach((movie, idx) => {
   const theatre = theatres[idx % theatres.length];
-  const screenType = screenTypes[idx % screenTypes.length];
+  const formatsAvailable = movie.formats || ['2D', 'IMAX 3D'];
 
   initialShows.push({
     _id: `671d2001a1b2c3d4e5f6${String(showIdCounter++).padStart(4, '0')}`,
     movie: movie,
     theatreName: theatre.name,
     theatreLocation: theatre.location,
-    screenType: screenType,
+    screenType: formatsAvailable[0] || '2D',
     showDate: todayStr,
     showTime: '02:00 PM',
     ticketPrice: { regular: 220, premium: 380, vip: 550 },
@@ -144,7 +256,7 @@ initialMovies.forEach((movie, idx) => {
     movie: movie,
     theatreName: theatre.name,
     theatreLocation: theatre.location,
-    screenType: screenType,
+    screenType: formatsAvailable[1] || formatsAvailable[0] || '2D',
     showDate: todayStr,
     showTime: '07:30 PM',
     ticketPrice: { regular: 250, premium: 420, vip: 600 },
@@ -157,7 +269,7 @@ initialMovies.forEach((movie, idx) => {
     movie: movie,
     theatreName: theatre.name,
     theatreLocation: theatre.location,
-    screenType: screenType,
+    screenType: formatsAvailable[0] || '2D',
     showDate: tomorrowStr,
     showTime: '06:00 PM',
     ticketPrice: { regular: 240, premium: 400, vip: 580 },

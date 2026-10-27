@@ -38,20 +38,32 @@ function Navbar() {
     navigate('/');
   };
 
+  const handleFormatClick = (format) => {
+    setIsNavOpen(false);
+    navigate(`/?format=${encodeURIComponent(format)}`);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-dark py-3 sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-dark py-3 sticky-top shadow-sm">
       <div className="container">
-        {/* Brand Logo */}
-        <Link
-          className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white"
-          to="/"
-          onClick={() => setIsNavOpen(false)}
-        >
-          <span className="badge bg-danger p-2 rounded-3">
-            <i className="bi bi-film fs-5"></i>
+        {/* Brand Logo & Location Indicator */}
+        <div className="d-flex align-items-center gap-3">
+          <Link
+            className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4 text-white mb-0"
+            to="/"
+            onClick={() => setIsNavOpen(false)}
+          >
+            <span className="badge bg-danger p-2 rounded-3">
+              <i className="bi bi-film fs-5"></i>
+            </span>
+            <span>IMovies</span>
+          </Link>
+
+          <span className="badge bg-dark border border-secondary border-opacity-50 text-secondary d-none d-sm-inline-flex align-items-center gap-1 small py-1 px-2">
+            <i className="bi bi-geo-alt-fill text-danger"></i>
+            <span>All Cineplexes</span>
           </span>
-          <span>IMovies</span>
-        </Link>
+        </div>
 
         {/* Mobile Hamburger Toggle Button */}
         <button
@@ -100,19 +112,65 @@ function Navbar() {
             )}
           </ul>
 
+          {/* Quick Format Shortcuts in Mobile Menu */}
+          {isNavOpen && (
+            <div className="d-lg-none my-3 p-3 rounded-3 bg-dark bg-opacity-75 border border-secondary border-opacity-25">
+              <div className="text-secondary small fw-bold text-uppercase mb-2 d-flex align-items-center gap-2">
+                <i className="bi bi-lightning-charge-fill text-warning"></i>
+                <span>Quick Format Filters</span>
+              </div>
+              <div className="d-grid grid-2 gap-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-info text-start d-flex align-items-center gap-2"
+                  onClick={() => handleFormatClick('IMAX 3D')}
+                >
+                  <i className="bi bi-badge-hd fs-6"></i>
+                  <span>IMAX 3D</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-danger text-start d-flex align-items-center gap-2"
+                  onClick={() => handleFormatClick('4DX')}
+                >
+                  <i className="bi bi-controller fs-6"></i>
+                  <span>4DX Motion</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-light text-start d-flex align-items-center gap-2"
+                  onClick={() => handleFormatClick('3D')}
+                >
+                  <i className="bi bi-eyeglasses fs-6"></i>
+                  <span>RealD 3D</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-outline-secondary text-start d-flex align-items-center gap-2"
+                  onClick={() => handleFormatClick('2D')}
+                >
+                  <i className="bi bi-tv fs-6"></i>
+                  <span>Standard 2D</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* User Controls & Dropdown */}
           <div className="d-flex align-items-center gap-3 mt-3 mt-lg-0">
             {user ? (
-              <div className="dropdown position-relative" ref={dropdownRef}>
+              <div className="dropdown position-relative w-100 w-lg-auto" ref={dropdownRef}>
                 <button
-                  className="btn btn-outline-light dropdown-toggle d-flex align-items-center gap-2"
+                  className="btn btn-outline-light dropdown-toggle d-flex align-items-center justify-content-between justify-content-lg-start gap-2 w-100 w-lg-auto"
                   type="button"
                   aria-expanded={isDropdownOpen}
                   onClick={() => setIsDropdownOpen((prev) => !prev)}
                 >
-                  <i className="bi bi-person-circle"></i>
-                  <span>{user.name}</span>
-                  {isAdmin && <span className="badge bg-warning text-dark ms-1">Admin</span>}
+                  <div className="d-flex align-items-center gap-2">
+                    <i className="bi bi-person-circle"></i>
+                    <span>{user.name}</span>
+                    {isAdmin && <span className="badge bg-warning text-dark ms-1">Admin</span>}
+                  </div>
                 </button>
 
                 <ul

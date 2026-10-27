@@ -53,6 +53,10 @@ const movieSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    formats: {
+      type: [String],
+      default: ['2D', '3D', 'IMAX 3D'],
+    },
     status: {
       type: String,
       enum: ['now_showing', 'coming_soon', 'ended'],

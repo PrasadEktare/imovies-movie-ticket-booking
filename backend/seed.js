@@ -23,6 +23,24 @@ const sampleMovies = [
     rating: 8.6,
     director: 'Denis Villeneuve',
     cast: ['Timothée Chalamet', 'Zendaya', 'Rebecca Ferguson', 'Javier Bardem'],
+    formats: ['IMAX 3D', '4DX', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Deadpool & Wolverine',
+    description:
+      'A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary Deadpool behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.',
+    genre: ['Action', 'Comedy', 'Sci-Fi'],
+    duration: 128,
+    language: 'English',
+    releaseDate: new Date('2024-07-26'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/9l1eZiJHmhr5jA625egvdngLwUT.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=73_1biulkYk',
+    rating: 8.0,
+    director: 'Shawn Levy',
+    cast: ['Ryan Reynolds', 'Hugh Jackman', 'Emma Corrin', 'Matthew Macfadyen'],
+    formats: ['IMAX 3D', '3D', '4DX', '2D'],
     status: 'now_showing',
   },
   {
@@ -39,6 +57,24 @@ const sampleMovies = [
     rating: 8.9,
     director: 'Christopher Nolan',
     cast: ['Cillian Murphy', 'Emily Blunt', 'Matt Damon', 'Robert Downey Jr.'],
+    formats: ['IMAX 2D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Avatar: The Way of Water',
+    description:
+      'Set more than a decade after the events of the first film, learn the story of the Sully family, the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.',
+    genre: ['Sci-Fi', 'Adventure', 'Action'],
+    duration: 192,
+    language: 'English',
+    releaseDate: new Date('2022-12-16'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/s16H6tpK2utvwDtzZIMQvRjrqqw.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=d9MyW72ELq0',
+    rating: 7.7,
+    director: 'James Cameron',
+    cast: ['Sam Worthington', 'Zoe Saldaña', 'Sigourney Weaver', 'Stephen Lang'],
+    formats: ['IMAX 3D', '4DX', '3D'],
     status: 'now_showing',
   },
   {
@@ -55,6 +91,24 @@ const sampleMovies = [
     rating: 8.7,
     director: 'Joaquim Dos Santos, Kemp Powers',
     cast: ['Shameik Moore', 'Hailee Steinfeld', 'Oscar Isaac', 'Daniel Kaluuya'],
+    formats: ['IMAX 3D', '3D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Gladiator II',
+    description:
+      'Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius must enter the Colosseum after his home is conquered by the tyrannical Emperors who now lead Rome with an iron fist.',
+    genre: ['Action', 'Drama', 'History'],
+    duration: 148,
+    language: 'English',
+    releaseDate: new Date('2024-11-22'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/euYIwmwkmz95mnXvufEmbL69ovr.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=4rgYUipGJNo',
+    rating: 7.5,
+    director: 'Ridley Scott',
+    cast: ['Paul Mescal', 'Pedro Pascal', 'Denzel Washington', 'Connie Nielsen'],
+    formats: ['IMAX 2D', '4DX', '2D'],
     status: 'now_showing',
   },
   {
@@ -71,6 +125,24 @@ const sampleMovies = [
     rating: 8.7,
     director: 'Christopher Nolan',
     cast: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain', 'Michael Caine'],
+    formats: ['IMAX 2D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Top Gun: Maverick',
+    description:
+      'After more than thirty years of service as one of the Navy’s top aviators, Pete "Maverick" Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.',
+    genre: ['Action', 'Drama'],
+    duration: 130,
+    language: 'English',
+    releaseDate: new Date('2022-05-27'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/AaV1YIdWKnjAiaOe0UUK23Luvio.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=giXco2nxYKg',
+    rating: 8.3,
+    director: 'Joseph Kosinski',
+    cast: ['Tom Cruise', 'Miles Teller', 'Jennifer Connelly', 'Jon Hamm'],
+    formats: ['IMAX 2D', '4DX', '2D'],
     status: 'now_showing',
   },
   {
@@ -87,6 +159,24 @@ const sampleMovies = [
     rating: 7.8,
     director: 'Matt Reeves',
     cast: ['Robert Pattinson', 'Zoë Kravitz', 'Paul Dano', 'Colin Farrell'],
+    formats: ['IMAX 2D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Avengers: Endgame',
+    description:
+      'After the devastating events of Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos’ actions and restore balance to the universe.',
+    genre: ['Action', 'Sci-Fi', 'Adventure'],
+    duration: 181,
+    language: 'English',
+    releaseDate: new Date('2019-04-26'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=TcMBFSGVi1c',
+    rating: 8.4,
+    director: 'Anthony Russo, Joe Russo',
+    cast: ['Robert Downey Jr.', 'Chris Evans', 'Mark Ruffalo', 'Chris Hemsworth'],
+    formats: ['IMAX 3D', '3D', '4DX', '2D'],
     status: 'now_showing',
   },
   {
@@ -103,6 +193,24 @@ const sampleMovies = [
     rating: 8.8,
     director: 'Christopher Nolan',
     cast: ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Elliot Page', 'Tom Hardy'],
+    formats: ['IMAX 2D', '2D'],
+    status: 'now_showing',
+  },
+  {
+    title: 'Joker: Folie à Deux',
+    description:
+      'Failed comedian Arthur Fleck meets the love of his life, Harley Quinn, while incarcerated at Arkham State Hospital. Upon his release, the two embark on a doomed, musical romantic misadventure.',
+    genre: ['Crime', 'Drama', 'Musical'],
+    duration: 138,
+    language: 'English',
+    releaseDate: new Date('2024-10-04'),
+    posterUrl: 'https://image.tmdb.org/t/p/w500/if8QiqCI7WAGImKcJCfzp6VTyKA.jpg',
+    bannerUrl: 'https://image.tmdb.org/t/p/original/uGmYqxh8flqkM27zbv457f5Bsao.jpg',
+    trailerUrl: 'https://www.youtube.com/watch?v=_OKAwz2NiOI',
+    rating: 6.8,
+    director: 'Todd Phillips',
+    cast: ['Joaquin Phoenix', 'Lady Gaga', 'Brendan Gleeson', 'Catherine Keener'],
+    formats: ['IMAX 2D', '2D'],
     status: 'now_showing',
   },
 ];
@@ -143,7 +251,7 @@ const seedDatabase = async () => {
     console.log('Inserting movies...');
 
     const insertedMovies = await Movie.insertMany(sampleMovies);
-    console.log(`Inserted ${insertedMovies.length} movies.`);
+    console.log(`Inserted ${insertedMovies.length} blockbuster movies.`);
 
     // Today & Tomorrow formatted as YYYY-MM-DD
     const today = new Date();
@@ -153,40 +261,38 @@ const seedDatabase = async () => {
     const todayStr = today.toISOString().split('T')[0];
     const tomorrowStr = tomorrow.toISOString().split('T')[0];
 
-    console.log('Generating showtimes and screens...');
+    console.log('Generating showtimes across cinema multiplexes...');
     const theatres = [
       { name: 'PVR ICON: Gold Class', location: 'Phoenix Mall, Downtown' },
-      { name: 'INOX Megaplex', location: 'City Center Mall' },
       { name: 'Cinepolis IMAX 3D', location: 'Grand Galleria' },
+      { name: 'INOX Megaplex 4DX', location: 'City Center Mall' },
     ];
-
-    const showTimesList = ['10:30 AM', '02:00 PM', '06:00 PM', '09:30 PM'];
-    const screenTypes = ['IMAX 3D', '2D', '3D'];
 
     const showsToCreate = [];
 
     insertedMovies.forEach((movie, index) => {
-      // 2 shows today, 2 shows tomorrow per movie
       const theatre = theatres[index % theatres.length];
-      const screenType = screenTypes[index % screenTypes.length];
+      const formatsAvailable = movie.formats || ['2D', 'IMAX 3D'];
 
+      // Show 1: Today afternoon
       showsToCreate.push({
         movie: movie._id,
         theatreName: theatre.name,
         theatreLocation: theatre.location,
-        screenType: screenType,
+        screenType: formatsAvailable[0] || '2D',
         showDate: todayStr,
         showTime: '02:00 PM',
         ticketPrice: { regular: 220, premium: 380, vip: 550 },
         totalSeats: 60,
-        bookedSeats: ['B3', 'B4', 'C5'], // Sample booked seats
+        bookedSeats: ['B3', 'B4', 'C5'],
       });
 
+      // Show 2: Today prime time evening
       showsToCreate.push({
         movie: movie._id,
         theatreName: theatre.name,
         theatreLocation: theatre.location,
-        screenType: screenType,
+        screenType: formatsAvailable[1] || formatsAvailable[0] || '2D',
         showDate: todayStr,
         showTime: '07:30 PM',
         ticketPrice: { regular: 250, premium: 420, vip: 600 },
@@ -194,11 +300,12 @@ const seedDatabase = async () => {
         bookedSeats: ['D1', 'D2', 'E4', 'E5'],
       });
 
+      // Show 3: Tomorrow evening
       showsToCreate.push({
         movie: movie._id,
         theatreName: theatre.name,
         theatreLocation: theatre.location,
-        screenType: screenType,
+        screenType: formatsAvailable[0] || '2D',
         showDate: tomorrowStr,
         showTime: '06:00 PM',
         ticketPrice: { regular: 240, premium: 400, vip: 580 },
@@ -230,6 +337,8 @@ const seedDatabase = async () => {
     console.log('Sample booking generated.');
     console.log('=============================================');
     console.log('Database Seeding Complete!');
+    console.log(`Movies in database: ${insertedMovies.length}`);
+    console.log(`Showtimes scheduled: ${createdShows.length}`);
     console.log('Admin Account: admin@imovies.com / admin123');
     console.log('Demo Account:  demo@imovies.com  / demo123');
     console.log('=============================================');

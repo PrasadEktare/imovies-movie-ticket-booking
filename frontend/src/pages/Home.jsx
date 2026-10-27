@@ -1,20 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import api from '../services/api';
 import MovieCard from '../components/MovieCard';
 
-const GENRES = ['All', 'Action', 'Sci-Fi', 'Adventure', 'Drama', 'Animation', 'Biography'];
+const GENRES = ['All', 'Action', 'Sci-Fi', 'Adventure', 'Drama', 'Animation', 'Biography', 'Crime'];
+const FORMATS = [
+  { label: 'All Formats', value: 'All', icon: 'bi-grid' },
+  { label: 'IMAX 3D', value: 'IMAX 3D', icon: 'bi-badge-hd' },
+  { label: '4DX Motion', value: '4DX', icon: 'bi-controller' },
+  { label: 'RealD 3D', value: '3D', icon: 'bi-eyeglasses' },
+  { label: 'Standard 2D', value: '2D', icon: 'bi-tv' },
+];
 
 function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const formatFromQuery = searchParams.get('format') || 'All';
+
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
+  const [selectedFormat, setSelectedFormat] = useState(formatFromQuery);
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Sync format state with URL query parameter changes
+  useEffect(() => {
+    const qFormat = searchParams.get('format');
+    if (qFormat && qFormat !== selectedFormat) {
+      setSelectedFormat(qFormat);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     fetchMovies();
-  }, [selectedGenre]);
+  }, [selectedGenre, selectedFormat]);
 
   const fetchMovies = async () => {
     try {
@@ -22,6 +41,7 @@ function Home() {
       setError('');
       const params = {};
       if (selectedGenre !== 'All') params.genre = selectedGenre;
+      if (selectedFormat !== 'All') params.format = selectedFormat;
       const res = await api.get('/movies', { params });
       setMovies(res.data.movies || []);
     } catch (err) {
@@ -30,6 +50,16 @@ function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleFormatChange = (fmtValue) => {
+    setSelectedFormat(fmtValue);
+    if (fmtValue === 'All') {
+      searchParams.delete('format');
+    } else {
+      searchParams.set('format', fmtValue);
+    }
+    setSearchParams(searchParams);
   };
 
   const filteredMovies = movies.filter((m) =>
@@ -41,11 +71,11 @@ function Home() {
   return (
     <div>
       {/* Hero Spotlight Section */}
-      {heroMovie && (
+      {heroMovie && selectedFormat === 'All' && selectedGenre === 'All' && !searchQuery && (
         <div
           className="position-relative text-white py-5 px-3 mb-5 d-flex align-items-center"
           style={{
-            minHeight: '440px',
+            minHeight: '460px',
             background: `linear-gradient(to right, rgba(15,16,22,0.95) 30%, rgba(15,16,22,0.6) 70%, rgba(15,16,22,0.3) 100%), url(${heroMovie.bannerUrl || heroMovie.posterUrl}) center/cover no-repeat`,
           }}
         >
@@ -63,6 +93,14 @@ function Home() {
                   <span className="text-light small">{heroMovie.duration} mins</span>
                   <span className="text-secondary small">•</span>
                   <span className="text-light small">{heroMovie.genre?.join(', ')}</span>
+                  {heroMovie.formats?.length > 0 && (
+                    <>
+                      <span className="text-secondary small">•</span>
+                      <span className="badge bg-primary bg-opacity-25 text-info small">
+                        {heroMovie.formats[0]}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <p className="lead text-light opacity-75 mb-4" style={{ maxWidth: '600px' }}>
                   {heroMovie.description}
@@ -94,10 +132,42 @@ function Home() {
       )}
 
       {/* Main Catalog Container */}
-      <div className="container pb-5">
+      <div className="container pb-5 pt-3">
+        {/* Quick Format Shortcuts Bar */}
+        <div className="mb-4 p-3 rounded-4 bg-black border border-secondary border-opacity-25 shadow-sm">
+          <div className="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <div className="d-flex align-items-center gap-2">
+              <span className="badge bg-danger p-2 rounded-circle">
+                <i className="bi bi-sliders fs-6"></i>
+              </span>
+              <div>
+                <span className="text-white fw-bold small text-uppercase">Cinema Formats:</span>
+                <span className="text-secondary small ms-2 d-none d-md-inline">Choose your preferred screening style</span>
+              </div>
+            </div>
+
+            <div className="d-flex gap-2 overflow-auto">
+              {FORMATS.map((fmt) => (
+                <button
+                  key={fmt.value}
+                  className={`btn btn-sm text-nowrap rounded-3 px-3 py-2 fw-semibold d-flex align-items-center gap-1 ${
+                    selectedFormat === fmt.value
+                      ? 'btn-info text-dark shadow'
+                      : 'btn-dark border border-secondary border-opacity-50 text-light'
+                  }`}
+                  onClick={() => handleFormatChange(fmt.value)}
+                >
+                  <i className={`bi ${fmt.icon}`}></i>
+                  <span>{fmt.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Search & Category Filter Bar */}
         <div className="row g-3 align-items-center justify-content-between mb-4">
-          <div className="col-lg-6 col-md-8">
+          <div className="col-lg-5 col-md-7">
             <div className="input-group">
               <span className="input-group-text bg-dark border-secondary text-secondary">
                 <i className="bi bi-search"></i>
@@ -120,7 +190,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="col-lg-6 col-md-12">
+          <div className="col-lg-7 col-md-12">
             <div className="d-flex gap-2 overflow-auto pb-2 scroll-nowrap">
               {GENRES.map((genre) => (
                 <button
@@ -143,7 +213,9 @@ function Home() {
         <div className="d-flex align-items-center justify-content-between mb-4">
           <h3 className="fw-bold text-white mb-0 d-flex align-items-center gap-2">
             <i className="bi bi-camera-reels text-danger"></i>
-            <span>Now Showing in Theatres</span>
+            <span>
+              {selectedFormat !== 'All' ? `${selectedFormat} Screenings` : 'Now Showing in Theatres'}
+            </span>
           </h3>
           <span className="text-secondary small">
             {filteredMovies.length} {filteredMovies.length === 1 ? 'Movie' : 'Movies'} Available
@@ -170,11 +242,16 @@ function Home() {
           <div className="text-center py-5 bg-dark bg-opacity-50 rounded-4 border border-secondary border-opacity-25">
             <i className="bi bi-film display-4 text-secondary mb-3 d-block"></i>
             <h5 className="text-white">No movies found</h5>
-            <p className="text-secondary small">Try adjusting your search query or genre filter.</p>
+            <p className="text-secondary small">
+              {selectedFormat !== 'All'
+                ? `No movies currently available in ${selectedFormat}.`
+                : 'Try adjusting your search query or genre filter.'}
+            </p>
             <button
               className="btn btn-outline-danger mt-2"
               onClick={() => {
                 setSelectedGenre('All');
+                handleFormatChange('All');
                 setSearchQuery('');
               }}
             >
